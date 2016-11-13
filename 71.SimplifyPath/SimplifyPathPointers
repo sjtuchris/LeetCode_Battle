@@ -1,0 +1,25 @@
+public class Solution {
+    public String simplifyPath(String path) {
+    	if (path == null|| path.length() < 1) {
+    		return new String();
+    	}
+    	path = path.trim();
+    	StringBuilder sb = new StringBuilder();
+    	String[] str = path.split("/");
+    	int count = 0;
+    	for (int i=path.length()-1; i>=0; i--){
+    		if (str[i].equals("..")){
+    			count++;
+    		}
+    		else if(!str[i].equals(".")&& !str[i].equals("")){
+    			if (count>0){
+    				count--;
+    			}
+    			else{
+    				sb.insert(0,"/"+str[i]);
+    			}
+    		}
+    	}
+    	return sb.length() == 0 ? new String("/") : sb.toString();
+    }
+}
