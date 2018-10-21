@@ -1,0 +1,14 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int i = digits.length - 1;
+        do {
+            digits[i] = (digits[i] + 1) % 10;
+            if (digits[i] == 0 && i ==0) {
+                int[] result = Arrays.copyOf(new int[]{1}, 1 + digits.length);
+                System.arraycopy(digits, 0, result, 1, digits.length);
+                return result;
+            }
+        } while (digits[i--] == 0);
+        return digits;
+    }
+}
